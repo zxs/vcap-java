@@ -258,4 +258,43 @@
 		</xsd:attribute>
 	</xsd:complexType>
 
+
+	<xsd:element name="webhdfs-connection-factory">
+		<xsd:annotation>
+			<xsd:documentation>
+				Locates a WebHDFS service.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="webhdfs-options" type="webhdfsOptionsType" minOccurs="0" maxOccurs="1"/>
+			</xsd:sequence>
+			<xsd:attribute name="id" type="xsd:string" use="optional">
+				<xsd:annotation>
+					<xsd:documentation>
+						The id for this WebHDFSConnectionFactory instance.
+						If not provided, the service name will be used as a fallback.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+			<xsd:attribute name="service-name" type="xsd:string" use="optional">
+				<xsd:annotation>
+					<xsd:documentation>
+						The name of the WebHDFS service.
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:attribute>
+		</xsd:complexType>	
+	</xsd:element>
+
+	<xsd:complexType name="webhdfsOptionsType">
+		<xsd:attribute name="authentication-type" use="optional">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:NMTOKEN">
+					<xsd:enumeration value="KERBEROS"></xsd:enumeration>
+					<xsd:enumeration value="PSEUDO"></xsd:enumeration>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
 </xsd:schema>

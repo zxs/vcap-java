@@ -49,6 +49,7 @@ public class CloudEnvironment {
 		labelledServiceType(RedisServiceInfo.class, "redis-2.2");
 		labelledServiceType(MongoServiceInfo.class, "mongodb-1.8");
 		labelledServiceType(RabbitServiceInfo.class, "rabbitmq-2.4");
+		labelledServiceType(WebHDFSServiceInfo.class, "webhdfs-2.0");
 	}
 	
 	/* package for testing purpose */

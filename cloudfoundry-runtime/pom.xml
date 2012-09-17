@@ -6,7 +6,7 @@
 	<artifactId>cloudfoundry-runtime</artifactId>
 	<packaging>jar</packaging>
 	<name>Cloud Foundry Runtime for Java/Spring</name>
-	<version>0.8.2.BUILD-SNAPSHOT</version>
+	<version>0.8.2.2</version>
 	<properties>
 		<java.version>1.6</java.version>
 		
@@ -28,6 +28,11 @@
 		<mockito.version>1.8.5</mockito.version>
 	</properties>
 	<dependencies>
+		<dependency>
+			<groupId>org.zxs</groupId>
+			<artifactId>webhdfs-java-client</artifactId>
+			<version>0.0.2</version>
+		</dependency>
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -217,6 +222,15 @@
 			<name>Springframework Maven SNAPSHOT Repository</name>
 			<url>http://maven.springframework.org/snapshot</url>
 		</repository>
+		<repository>
+			<id>cdh.releases.repo</id>
+			<name>CDH Releases Repository</name>
+			<url>https://repository.cloudera.com/content/repositories/releases/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+
 	</repositories>
 	<build>
 		<extensions>
@@ -289,6 +303,7 @@
 			</plugin>
 		</plugins>
 	</build>
+<!--
 	<distributionManagement>
 		<repository>
 			<id>spring-milestone</id>
@@ -301,4 +316,5 @@
 			<url>s3://maven.springframework.org/snapshot</url>
 		</snapshotRepository>
 	</distributionManagement>
+-->
 </project>

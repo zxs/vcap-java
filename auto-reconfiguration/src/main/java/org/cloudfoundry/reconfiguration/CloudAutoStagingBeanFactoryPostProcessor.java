@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 
 import javax.sql.DataSource;
 
+import org.cloudfoundry.reconfiguration.data.blob.WebHDFSConfigurer;
 import org.cloudfoundry.reconfiguration.data.document.MongoConfigurer;
 import org.cloudfoundry.reconfiguration.data.keyvalue.RedisConfigurer;
 import org.cloudfoundry.reconfiguration.data.relational.DataSourceConfigurer;
@@ -69,6 +70,7 @@ public class CloudAutoStagingBeanFactoryPostProcessor implements BeanFactoryPost
 		new MongoConfigurer(cloudEnvironment).configure(defaultListableBeanFactory);
 		new RedisConfigurer(cloudEnvironment).configure(defaultListableBeanFactory);
 		new RabbitConfigurer(cloudEnvironment).configure(defaultListableBeanFactory);
+		new WebHDFSConfigurer(cloudEnvironment).configure(defaultListableBeanFactory);
 	}
 
 	/**

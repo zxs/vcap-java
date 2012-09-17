@@ -2,10 +2,12 @@ package org.cloudfoundry.runtime.service.config.xml;
 
 import org.cloudfoundry.runtime.env.CloudPropertiesFactoryBean;
 import org.cloudfoundry.runtime.env.MongoServiceInfo;
-import org.cloudfoundry.runtime.env.RdbmsServiceInfo;
 import org.cloudfoundry.runtime.env.RabbitServiceInfo;
+import org.cloudfoundry.runtime.env.RdbmsServiceInfo;
 import org.cloudfoundry.runtime.env.RedisServiceInfo;
+import org.cloudfoundry.runtime.env.WebHDFSServiceInfo;
 import org.cloudfoundry.runtime.service.CloudServicesScanner;
+import org.cloudfoundry.runtime.service.bigdata.CloudWebHDFSConnectionFactoryBean;
 import org.cloudfoundry.runtime.service.document.CloudMongoDbFactoryBean;
 import org.cloudfoundry.runtime.service.keyvalue.CloudRedisConnectionFactoryBean;
 import org.cloudfoundry.runtime.service.messaging.CloudRabbitConnectionFactoryBean;
@@ -22,12 +24,15 @@ import org.w3c.dom.Element;
  * @author Ramnivas Laddad
  * @author Scott Andrews
  * @author Thomas Risberg
+ * @author zixian.shen
  *
  */
 public class CloudNamespaceHandler extends NamespaceHandlerSupport {
 
 	@Override
 	public void init() {
+		this.registerBeanDefinitionParser("webhdfs-connection-factory",
+				new CloudRabbitConnectionFactoryParser(CloudWebHDFSConnectionFactoryBean.class, WebHDFSServiceInfo.class));		
 		this.registerBeanDefinitionParser("rabbit-connection-factory",
 				new CloudRabbitConnectionFactoryParser(CloudRabbitConnectionFactoryBean.class, RabbitServiceInfo.class));
 		this.registerBeanDefinitionParser("redis-connection-factory",
